@@ -10,7 +10,7 @@
       --card: #ffffff;
       --accent: #00b87c;
       --accent-soft: #d3f3e7;
-      --text-main: #1f2933;
+      --text-main: #111827;
       --text-muted: #6c7a89;
       --danger: #ff4f5e;
       --border: #e1e7ef;
@@ -24,59 +24,95 @@
     }
 
     body {
-      background: var(--bg);
+      background: radial-gradient(circle at top left, #e0f2fe, #f5f7fb 45%);
       color: var(--text-main);
-      padding: 24px;
+      padding: 16px;
     }
 
-    .container {
-      max-width: 1080px;
+    @media (min-width: 768px) {
+      body {
+        padding: 24px;
+      }
+    }
+
+    .page {
+      max-width: 1120px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 2.2fr 1.1fr;
-      gap: 24px;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.1fr);
+      gap: 20px;
     }
 
     @media (max-width: 900px) {
-      .container {
+      .page {
         grid-template-columns: 1fr;
       }
     }
 
     .card {
       background: var(--card);
-      border-radius: 12px;
-      padding: 20px 22px;
+      border-radius: 14px;
       border: 1px solid var(--border);
-      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
     }
+
+    .main-card {
+      padding: 18px 16px 20px;
+    }
+
+    @media (min-width: 768px) {
+      .main-card {
+        padding: 22px 20px 24px;
+      }
+    }
+
+    .sidebar-card {
+      padding: 18px 16px 18px;
+      position: sticky;
+      top: 16px;
+      align-self: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar-card {
+        position: static;
+      }
+    }
+
+    /* HEADER */
 
     .campaign-header {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .campaign-avatar {
-      width: 64px;
-      height: 64px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #00b87c, #2dd4bf);
+      background: radial-gradient(circle at 20% 20%, #22c55e, #0f766e);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
       flex-shrink: 0;
     }
 
     .campaign-title {
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 6px;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+
+    @media (min-width: 640px) {
+      .campaign-title {
+        font-size: 24px;
+      }
     }
 
     .campaign-subtitle {
@@ -89,7 +125,7 @@
       align-items: center;
       gap: 6px;
       background: var(--accent-soft);
-      color: #036b4f;
+      color: #065f46;
       border-radius: 999px;
       padding: 3px 10px;
       font-size: 11px;
@@ -106,21 +142,26 @@
       background: var(--accent);
     }
 
-    .hero-image {
-      width: 100%;
+    /* HERO SECTION */
+
+    .hero {
       border-radius: 12px;
-      margin-bottom: 18px;
-      position: relative;
-      overflow: hidden;
-      color: rgba(255, 255, 255, 0.9);
-      padding: 16px;
-      background: radial-gradient(circle at top left, #00b87c, #111827);
+      background: radial-gradient(circle at top left, #0f172a, #020617 55%);
+      color: rgba(255, 255, 255, 0.95);
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .hero {
+        padding: 16px;
+      }
     }
 
     .hero-layout {
       display: grid;
-      grid-template-columns: 1.1fr 1.6fr;
-      gap: 18px;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.5fr);
+      gap: 14px;
       align-items: center;
     }
 
@@ -133,44 +174,65 @@
     .hero-photo-wrapper {
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(15, 23, 42, 0.9);
     }
 
     .hero-photo {
       width: 100%;
-      height: 100%;
-      max-height: 230px;
+      height: 210px;
       object-fit: cover;
       display: block;
     }
 
-    .hero-copy h2 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 4px;
+    @media (min-width: 768px) {
+      .hero-photo {
+        height: 230px;
+      }
+    }
+
+    .hero-copy h1 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    @media (min-width: 640px) {
+      .hero-copy h1 {
+        font-size: 24px;
+      }
     }
 
     .hero-copy p {
       font-size: 13px;
-      max-width: 360px;
-      line-height: 1.4;
+      line-height: 1.5;
+      margin-bottom: 8px;
     }
 
     .hero-pill {
-      position: absolute;
-      bottom: 12px;
-      right: 16px;
-      background: rgba(255, 255, 255, 0.09);
-      border-radius: 999px;
-      padding: 4px 10px;
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: 11px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(10px);
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.8);
     }
 
+    .hero-pill strong {
+      font-weight: 700;
+    }
+
+    /* PROGRESS STRIP */
+
     .progress-section {
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      border-radius: 10px;
+      background: #f9fafb;
+      padding: 10px 10px 11px;
+      border: 1px solid var(--border);
     }
 
     .goal-row {
@@ -178,27 +240,31 @@
       justify-content: space-between;
       align-items: baseline;
       margin-bottom: 6px;
+      gap: 8px;
     }
 
     .raised {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
     }
 
     .raised span {
-      font-size: 13px;
+      display: block;
+      font-size: 11px;
       font-weight: 500;
       color: var(--text-muted);
     }
 
     .goal {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
+      text-align: right;
+      flex-shrink: 0;
     }
 
     .progress-bar {
       width: 100%;
-      height: 10px;
+      height: 8px;
       border-radius: 999px;
       background: #e5edf5;
       overflow: hidden;
@@ -214,85 +280,150 @@
     .progress-meta {
       display: flex;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-muted);
+      gap: 8px;
     }
 
-    .story-heading {
+    /* STORY TIMELINE */
+
+    .timeline-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin: 10px 0 2px;
+    }
+
+    .story-heading-main {
       font-size: 17px;
-      font-weight: 700;
-      margin: 14px 0 8px;
-    }
-
-    .story p {
-      font-size: 14px;
-      line-height: 1.5;
-      color: var(--text-main);
+      font-weight: 800;
       margin-bottom: 10px;
     }
 
-    .story strong {
+    .story-intro {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+
+    .story-intro strong {
       font-weight: 700;
     }
 
-    .story ul {
-      margin-left: 18px;
-      margin-bottom: 10px;
-      font-size: 14px;
-      color: var(--text-main);
-    }
-
-    .story li {
-      margin-bottom: 4px;
-    }
-
-    .photos {
-      margin-top: 18px;
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .story-section {
+      display: flex;
+      flex-direction: column;
       gap: 10px;
-      margin-top: 8px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      padding: 10px;
     }
 
-    @media (max-width: 700px) {
-      .photo-grid {
-        grid-template-columns: 1fr;
+    @media (min-width: 768px) {
+      .story-section {
+        flex-direction: row;
+        align-items: stretch;
+        padding: 12px;
+      }
+      .story-section.reverse {
+        flex-direction: row-reverse;
       }
     }
 
-    .photo-grid figure {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: #f8fafc;
+    .story-text {
+      flex: 1.5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
     }
 
-    .photo-grid img {
-      display: block;
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .photo-grid figcaption {
-      font-size: 12px;
-      padding: 6px 8px 8px;
+    .story-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
       color: var(--text-muted);
     }
 
-    .aside-title {
-      font-size: 14px;
+    .story-title {
+      font-size: 15px;
       font-weight: 700;
+    }
+
+    .story-body {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-main);
+    }
+
+    .story-body strong {
+      font-weight: 700;
+    }
+
+    .story-list {
+      margin-top: 4px;
+      margin-left: 18px;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .story-list li {
+      margin-bottom: 3px;
+    }
+
+    .story-image-wrapper {
+      flex: 1.1;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #e5e7eb;
+      max-height: 220px;
+    }
+
+    .story-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      .story-image-wrapper {
+        max-height: 200px;
+      }
+    }
+
+    .update-card {
+      margin-top: 4px;
+      padding: 9px 10px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      border: 1px dashed var(--border);
+      font-size: 12px;
       margin-bottom: 10px;
     }
+
+    .legal {
+      margin-top: 10px;
+      font-size: 10px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .pill-red {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    /* SIDEBAR */
 
     .donate-button {
       display: block;
       width: 100%;
-      padding: 12px 16px;
+      padding: 11px 16px;
       background: var(--accent);
       color: white;
       border-radius: 999px;
@@ -301,8 +432,8 @@
       font-size: 15px;
       font-weight: 700;
       text-align: center;
-      margin: 8px 0 10px;
-      box-shadow: 0 10px 20px rgba(34, 197, 94, 0.35);
+      margin: 4px 0 8px;
+      box-shadow: 0 10px 24px rgba(22, 163, 74, 0.45);
     }
 
     .donate-button:hover {
@@ -310,11 +441,18 @@
       transform: translateY(-1px);
     }
 
+    .secure-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
     .quick-amounts {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .chip {
@@ -335,17 +473,24 @@
       font-weight: 600;
     }
 
-    .secure-note {
-      font-size: 11px;
+    .sidebar-text {
+      font-size: 12px;
       color: var(--text-muted);
-      text-align: center;
-      margin-bottom: 4px;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .aside-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      margin-top: 4px;
     }
 
     .organizer {
       border-top: 1px solid var(--border);
-      padding-top: 10px;
-      margin-top: 10px;
+      padding-top: 9px;
+      margin-top: 6px;
       display: flex;
       gap: 10px;
       align-items: center;
@@ -375,16 +520,17 @@
       display: flex;
       justify-content: space-between;
       border-top: 1px solid var(--border);
-      padding-top: 9px;
-      margin-top: 10px;
+      padding-top: 8px;
+      margin-top: 8px;
       font-size: 11px;
       color: var(--text-muted);
+      gap: 10px;
     }
 
     .donor-list {
-      margin-top: 12px;
+      margin-top: 10px;
       border-top: 1px solid var(--border);
-      padding-top: 10px;
+      padding-top: 8px;
     }
 
     .donor {
@@ -393,6 +539,7 @@
       align-items: center;
       margin-bottom: 8px;
       font-size: 13px;
+      gap: 8px;
     }
 
     .donor span.name {
@@ -409,33 +556,22 @@
       display: block;
     }
 
-    .update-card {
-      margin-top: 12px;
-      padding: 10px 12px;
+    .sidebar-update {
+      margin-top: 10px;
+      padding: 8px 9px;
       border-radius: 10px;
-      background: #f8fafc;
-      border: 1px dashed var(--border);
-      font-size: 12px;
-    }
-
-    .legal {
-      margin-top: 18px;
-      font-size: 10px;
-      color: var(--text-muted);
+      background: #fef2f2;
+      border: 1px dashed #fecaca;
+      font-size: 11px;
       line-height: 1.4;
-    }
-
-    .pill-red {
-      color: var(--danger);
-      font-weight: 600;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="page">
 
-    <!-- MAIN COLUMN -->
-    <main class="card">
+    <!-- MAIN STORY -->
+    <main class="card main-card">
       <header class="campaign-header">
         <div class="campaign-avatar">AN</div>
         <div>
@@ -452,34 +588,40 @@
         </div>
       </header>
 
-      <!-- HERO WITH MAIN PHOTO -->
-      <div class="hero-image">
+      <!-- HERO -->
+      <section class="hero">
         <div class="hero-layout">
           <div class="hero-photo-wrapper">
             <img
               src="images/alex-hero-overwhelmed.jpg"
-              alt="Alex behind an empty bar looking dramatically overwhelmed"
+              alt="Alex alone behind a bar, looking dramatically overwhelmed"
               class="hero-photo"
             >
           </div>
           <div class="hero-copy">
-            <h2>“I was always this close.”</h2>
+            <h1>“I was always this close.”</h1>
             <p>
               Alex lives with a fictional yet frighteningly accurate condition:
               <strong>Ultra-Rare Talent Application Myopathy (URTAM)</strong> – his body
               short-circuits whenever a dream starts to look like an actual job.
             </p>
+            <p>
+              Bars, acting, poker, pool – he has almost gone pro in all of them.
+              What he has never gone pro in is stability.
+            </p>
+            <div class="hero-pill">
+              <span>ICD-Definitely-Not-Real:</span>
+              <strong>URTAM-777</strong>
+            </div>
           </div>
         </div>
-        <div class="hero-pill">
-          ICD-Definitely-Not-Real: <strong>URTAM-777</strong>
-        </div>
-      </div>
+      </section>
 
+      <!-- PROGRESS -->
       <section class="progress-section">
         <div class="goal-row">
-          <div class="raised">€1,820 <span>raised</span></div>
-          <div class="goal">of €10,000 goal</div>
+          <div class="raised">€1,820 <span>raised so far</span></div>
+          <div class="goal">of €10,000 “Please Let Him Finish Something” goal</div>
         </div>
         <div class="progress-bar">
           <div class="progress-fill"></div>
@@ -490,208 +632,197 @@
         </div>
       </section>
 
-      <section class="story">
-        <h2 class="story-heading">Who is Alex, really?</h2>
-        <p>
-          Alex is that friend everyone has:
-          the one who is <strong>weirdly talented at a lot of things</strong>,
-          has a story for every failure, and somehow turns every almost-success
-          into a personality trait.
-        </p>
-        <p>
-          He has never worked an office job a single day in his life – not one.
-          Instead, he has built a heroic résumé of nearly-professional chaos:
-        </p>
-        <ul>
-          <li><strong>Bars:</strong> started strong, knew all the cocktails, disappeared halfway through the season.</li>
-          <li><strong>Acting:</strong> calls himself an actor, lands roughly two jobs a year and celebrates each like an Oscar.</li>
-          <li><strong>Poker:</strong> “almost” went pro, then “almost” went broke.</li>
-          <li><strong>Pool:</strong> is still absolutely certain he “could have gone pro” if life hadn’t “intervened.”</li>
-        </ul>
+      <!-- STORY INTRO -->
+      <div class="timeline-label">The Alex Cinematic Universe</div>
+      <h2 class="story-heading-main">A true story about almost everything</h2>
+      <p class="story-intro">
+        Alex has never worked an office job a single day in his life.
+        Instead, he has built a heroic résumé of
+        <strong>almost-careers</strong>:
+        the bartender everyone loved for one season, the actor with
+        two gigs a year, the “almost” professional poker player, and the pool
+        legend who absolutely “could have gone pro” (according to himself).
+      </p>
 
-        <p>
-          The pattern was so consistent that his friends started joking there must
-          be a medical explanation.
-          Unfortunately, Alex heard that and ran with it.
-        </p>
-
-        <h2 class="story-heading">Ultra-Rare Talent Application Myopathy (URTAM)</h2>
-        <p>
-          <strong>URTAM</strong> is a highly suspicious, completely unofficial condition
-          where the patient’s body violently rejects any attempt to turn talent into
-          sustained employment.
-          It only flares up in very specific situations:
-        </p>
-        <ul>
-          <li>When a bar manager says the words “double shift” or “summer season contract”.</li>
-          <li>When an acting job requires waking up before 7:00 AM more than two days in a row.</li>
-          <li>When poker stops being “fun” and starts being “bankroll management”.</li>
-          <li>Whenever someone asks, “So what do you do, like, full time?”</li>
-        </ul>
-
-        <p>
-          Outside of those triggers, Alex can:
-          laugh, tell stories, line up a perfect pool shot, and charm a whole bar.
-          Inside those triggers, his system collapses into a tragic,
-          beautifully cinematic “I just can’t” montage.
-        </p>
-
-        <h2 class="story-heading">The Four Careers That Almost Happened</h2>
-        <p><strong>1. Alex the Bartender</strong></p>
-        <p>
-          Behind the bar, Alex is a natural:
-          fast hands, good memory, joke for every customer.
-          Unfortunately his URTAM symptoms spike around week three of the job.
-          Shifts get longer, managers start asking about “availability,” and his
-          nervous system quietly whispers, “What if we simply didn’t show up?” 
-        </p>
-
-        <p><strong>2. Alex the Actor</strong></p>
-        <p>
-          Twice a year, the universe remembers he’s an actor.
-          He gets a role, transforms, gives everything on set… then
-          spends the next four months telling everyone:
-          “I’ve been so busy with projects,” while his phone stays suspiciously silent.
-        </p>
-
-        <p><strong>3. Alex the Poker Pro (almost)</strong></p>
-        <p>
-          At one point, Alex <em>seriously</em> tried to go pro at poker.
-          He studied ranges, watched training videos, talked about “EV” and “bankroll”.
-          Then URTAM kicked in:
-          the moment discipline was required, his whole being defaulted to
-          “all-in because I feel it”.
-          Spoiler: the cards did not feel it back.
-        </p>
-
-        <p><strong>4. Alex the Pool Phenomenon (allegedly)</strong></p>
-        <p>
-          According to Alex, he was “<strong>this close</strong>” to going pro in pool.
-          No one has ever seen actual evidence of tournaments, coaches, or rankings.
-          But every bar with a pool table becomes a TED Talk about
-          “what could have been if life hadn’t gotten in the way.”
-        </p>
-
-        <h2 class="story-heading">Why Alex Cannot Just “Get a Job”</h2>
-        <p>
-          URTAM is not about laziness.
-          If laziness were the problem, he would not have survived
-          brutal bar nights, auditions, or 12-hour poker sessions.
-        </p>
-        <p>
-          The problem is this:
-          the moment any of those things start to look like
-          <strong>an actual long-term plan</strong>,
-          his body and brain experience:
-        </p>
-        <ul>
-          <li><strong>Shift-Induced Vanishing Reflex</strong> – confirmed shifts mysteriously “slip his mind”.</li>
-          <li><strong>Audition Fog</strong> – lines memorised perfectly… until the camera is actually rolling.</li>
-          <li><strong>Bankroll Amnesia</strong> – remembers every bad beat, forgets every bankroll guideline.</li>
-          <li><strong>“I Could Have Gone Pro” Syndrome</strong> – retroactively becomes elite at everything he quit.</li>
-        </ul>
-
-        <p>
-          The result: no stable job, unpredictable income, and a man who genuinely
-          wants to do something with his life, but somehow keeps ending up back at zero
-          with a great story instead of a payslip.
-        </p>
-
-        <h2 class="story-heading">What This Fund Will Help With</h2>
-        <p>
-          This fundraiser is partly a joke, but Alex’s situation is real.
-          Your contribution will help him:
-        </p>
-        <ul>
-          <li><strong>Pay rent & groceries</strong> while he tries to string more than 3 paychecks together in a row.</li>
-          <li><strong>Afford acting classes & self-tape gear</strong> so those two jobs a year can become three. Maybe four, if the universe is feeling generous.</li>
-          <li><strong>Get proper mental and financial checkups</strong> after the poker era.</li>
-          <li><strong>Stop saying “I could have gone pro”</strong> and start saying “I actually finished this thing.”</li>
-        </ul>
-
-        <p>
-          If, by some miracle, URTAM eases up and Alex stabilises in one of his
-          many almost-careers, any extra funds will be used to:
-        </p>
-        <ul>
-          <li>Help other talented chaos-machines like him, and/or</li>
-          <li>Buy drinks for everyone who believed in him before the comeback montage.</li>
-        </ul>
-
-        <h2 class="story-heading">A Message From Alex</h2>
-        <p>
-          “Everyone thinks I’m just messing around. I get it, it looks like that.
-          But I’ve tried: bars, poker, acting, pool.
-          Every time I get close, something in me pulls the emergency brake.
-        </p>
-        <p>
-          I know I joke a lot about it. But I do not actually want to be the
-          ‘almost’ guy forever.
-          If you help me, you are helping me buy a little time to finally turn one
-          of these almost-careers into a real one.
-          And if it all goes wrong again… at least you funded some great stories.”
-        </p>
-
-        <h2 class="story-heading">How You Can Help (Besides Roasting Him)</h2>
-        <p>
-          If you cannot donate, you can still help by sharing this page with the words:
-          <strong>“You have to meet my friend Alex.”</strong>
-        </p>
-        <p>
-          Somewhere between the failed bar shifts, the two acting gigs a year,
-          the poker scars, and the legendary pool monologues,
-          there is a version of Alex who actually makes it.
-        </p>
-        <p>
-          With your help, we might finally meet him.
-        </p>
+      <!-- ACT I: ACTOR -->
+      <section class="story-section">
+        <div class="story-text">
+          <div class="story-kicker">Act I · The Actor</div>
+          <div class="story-title">“Big things coming.” Two times a year.</div>
+          <p class="story-body">
+            Alex <strong>is</strong> an actor.
+            At least twice a year, the universe remembers and gives him a job.
+            He transforms for the role, gives everything on set, and then
+            spends the next four months describing himself as “super busy with projects”
+            while his phone is aggressively silent.
+          </p>
+          <p class="story-body">
+            Every new headshot is posted with the caption
+            <strong>“big things coming”</strong>.
+            The big thing is usually another headshot.
+          </p>
+        </div>
+        <div class="story-image-wrapper">
+          <img
+            src="images/alex-before-urtam.jpg"
+            alt="Alex posing confidently like an upcoming actor"
+            class="story-image"
+          >
+        </div>
       </section>
 
-      <!-- PHOTO GALLERY SECTION -->
-      <section class="photos">
-        <h2 class="story-heading">Alex, almost famous in 4 frames</h2>
-        <p style="font-size:13px; color:var(--text-muted); margin-bottom:6px;">
-          The bartender, the actor, the poker experiment, and the pool legend that lives in his head.
-        </p>
+      <!-- ACT II: BARTENDER -->
+      <section class="story-section reverse">
+        <div class="story-text">
+          <div class="story-kicker">Act II · The Bartender</div>
+          <div class="story-title">The season that never quite finishes</div>
+          <p class="story-body">
+            Behind the bar, Alex is a natural:
+            fast hands, big smile, remembers your drink and your heartbreak.
+            The first weeks are magic – tips are great, customers love him,
+            managers call him “a find”.
+          </p>
+          <p class="story-body">
+            Then <strong>URTAM</strong> kicks in.
+            Shifts get longer, the word “contract” appears, and his nervous system
+            quietly whispers:
+            <em>“What if we simply… disappeared?”</em>
+          </p>
+          <ul class="story-list">
+            <li>Week 1–2: “I love this place.”</li>
+            <li>Week 3–4: “I just need a day off.”</li>
+            <li>Week 5: “I think the universe is telling me to focus on acting.”</li>
+          </ul>
+        </div>
+        <div class="story-image-wrapper">
+          <img
+            src="images/alex-during-urtam-couch.jpg"
+            alt="Alex collapsed on a couch still in bar work clothes"
+            class="story-image"
+          >
+        </div>
+      </section>
 
-        <div class="photo-grid">
-          <figure>
-            <img
-              src="images/alex-before-urtam.jpg"
-              alt="Alex smiling confidently like an upcoming actor"
-            >
-            <figcaption>Alex the Actor: posting this headshot twice a year with “big things coming”.</figcaption>
-          </figure>
+      <!-- ACT III: POKER -->
+      <section class="story-section">
+        <div class="story-text">
+          <div class="story-kicker">Act III · The Poker Era</div>
+          <div class="story-title">“I was playing the long game.” The bankroll was not.</div>
+          <p class="story-body">
+            At one point, Alex <strong>seriously</strong> tried to go pro at poker.
+            He talked about ranges, EV, variance, bankroll management.
+            For a moment, it almost looked like discipline.
+          </p>
+          <p class="story-body">
+            Then URTAM showed up at the table.
+            The moment poker stopped being “fun” and started being “spreadsheet”,
+            his entire strategy devolved into:
+            <strong>“all-in because I feel it.”</strong>
+          </p>
+          <p class="story-body">
+            The cards, tragically, did not feel it back.
+          </p>
+        </div>
+        <div class="story-image-wrapper">
+          <img
+            src="images/alex-poker-almost-pro.jpg"
+            alt="Alex at a poker table with a small stack of chips looking worried"
+            class="story-image"
+          >
+        </div>
+      </section>
 
-          <figure>
-            <img
-              src="images/alex-during-urtam-couch.jpg"
-              alt="Alex exhausted in work clothes collapsing onto a couch"
-            >
-            <figcaption>Alex the Bartender: post-shift, post-hope, pre-“I’m never doing this again”.</figcaption>
-          </figure>
+      <!-- ACT IV: POOL -->
+      <section class="story-section reverse">
+        <div class="story-text">
+          <div class="story-kicker">Act IV · The Pool Legend</div>
+          <div class="story-title">In every bar, a TED Talk about “what could’ve been”</div>
+          <p class="story-body">
+            According to Alex, he was <strong>this close</strong> to going pro in pool.
+            No one has ever seen rankings, coaches, or trophies.
+            What we have seen is every bar pool table becoming a
+            30-minute lecture on “what might have happened if life hadn’t intervened.”
+          </p>
+          <p class="story-body">
+            To his credit, he <em>is</em> sickeningly good.
+            To his debit, the only audience is half-drunk strangers
+            who did not ask to be part of his documentary.
+          </p>
+        </div>
+        <div class="story-image-wrapper">
+          <img
+            src="images/alex-pool-legend.jpg"
+            alt="Alex lining up a dramatic pool shot in a bar"
+            class="story-image"
+          >
+        </div>
+      </section>
 
-          <figure>
-            <img
-              src="images/alex-doctor-visit.jpg"
-              alt="Alex with a doctor pointing at a ridiculous career graph"
-            >
-            <figcaption>Medical consultation: graph clearly showing talent high, stability low, drama off the charts.</figcaption>
-          </figure>
+      <!-- ACT V: DIAGNOSIS -->
+      <section class="story-section">
+        <div class="story-text">
+          <div class="story-kicker">Act V · The Diagnosis</div>
+          <div class="story-title">Ultra-Rare Talent Application Myopathy (URTAM)</div>
+          <p class="story-body">
+            After years of almost-careers, his friends finally said:
+            “There has to be a medical explanation.”
+            Alex, being Alex, turned the joke into a diagnosis.
+          </p>
+          <p class="story-body">
+            <strong>URTAM</strong> is the unofficial condition where the patient’s
+            body rejects any attempt to turn talent into sustained employment:
+          </p>
+          <ul class="story-list">
+            <li><strong>Shift-Induced Vanishing Reflex</strong> – booked shifts mysteriously “forgotten”.</li>
+            <li><strong>Audition Fog</strong> – lines perfect until someone says “we’re rolling”.</li>
+            <li><strong>Bankroll Amnesia</strong> – remembers every bad beat, forgets every bankroll rule.</li>
+            <li><strong>“I Could Have Gone Pro” Syndrome</strong> – the past evolves with every story.</li>
+          </ul>
+        </div>
+        <div class="story-image-wrapper">
+          <img
+            src="images/alex-doctor-visit.jpg"
+            alt="Alex with a doctor pointing at a funny career graph"
+            class="story-image"
+          >
+        </div>
+      </section>
 
-          <figure>
-            <img
-              src="images/alex-therapy-progress.jpg"
-              alt="Alex focusing seriously, like he is plotting a comeback"
-            >
-            <figcaption>Alex in recovery: actually taking notes instead of just saying “I’ll figure it out”.</figcaption>
-          </figure>
+      <!-- ACT VI: COMEBACK -->
+      <section class="story-section reverse">
+        <div class="story-text">
+          <div class="story-kicker">Act VI · The Comeback Plan</div>
+          <div class="story-title">From “almost” to “actually finished”</div>
+          <p class="story-body">
+            This fundraiser is partly a joke, but Alex’s situation is real.
+            No office job safety net, no steady income,
+            just a talented chaos-machine trying to finally land somewhere.
+          </p>
+          <p class="story-body">
+            Your support will help him:
+          </p>
+          <ul class="story-list">
+            <li>Pay rent & groceries while he chains more than three paychecks together.</li>
+            <li>Invest in acting classes and self-tapes so two roles a year can become four.</li>
+            <li>Recover financially and mentally from the poker era.</li>
+            <li>Retire the sentence “I could have gone pro” and replace it with “I actually did this.”</li>
+          </ul>
+          <p class="story-body">
+            For once, the story does not have to end at “almost”.
+          </p>
+        </div>
+        <div class="story-image-wrapper">
+          <img
+            src="images/alex-therapy-progress.jpg"
+            alt="Alex focused at a table, writing plans with a supportive person nearby"
+            class="story-image"
+          >
         </div>
       </section>
 
       <section class="update-card">
         <strong>Latest update:</strong> Alex completed a full bar shift, went to an
-        audition the next day, and only brought up his “pro pool career” twice.
+        audition the next day, and only mentioned his “pro pool career” twice.
         Clinically, this is considered a breakthrough.
       </section>
 
@@ -699,15 +830,15 @@
         Note: Ultra-Rare Talent Application Myopathy (URTAM) is a humorous, fictional
         condition created for this parody-style fundraiser page. It is not real
         medical advice or a real diagnosis. Any resemblance to your own pattern of
-        quitting things right before they get serious is, frankly, between you and you.
+        quitting things right before they get serious is between you and your conscience.
       </div>
     </main>
 
     <!-- SIDEBAR -->
-    <aside class="card">
+    <aside class="card sidebar-card">
       <button class="donate-button">Donate now</button>
       <div class="secure-note">
-        Secure payment • Instant confirmation • 0 auditions required from you
+        Secure payment • Instant impact • 0 auditions required from you
       </div>
 
       <div class="quick-amounts">
@@ -717,7 +848,7 @@
         <div class="chip">€100</div>
       </div>
 
-      <p style="font-size:12px; color:var(--text-muted); margin-bottom: 14px;">
+      <p class="sidebar-text">
         €20 sponsors one day of Alex not going all-in with his life choices.
         €50 helps him say “I’m working” without adding “on myself” at the end.
       </p>
@@ -738,11 +869,11 @@
         </div>
         <div>
           <div style="font-weight:600;">Shared 89 times</div>
-          <div>proof he is at least viral with friends</div>
+          <div>proof he’s at least viral with friends</div>
         </div>
       </div>
 
-      <div class="aside-title" style="margin-top: 16px;">Recent donations</div>
+      <div class="aside-title" style="margin-top: 10px;">Recent donations</div>
       <div class="donor-list">
         <div class="donor">
           <div>
@@ -774,10 +905,10 @@
         </div>
       </div>
 
-      <div class="update-card" style="margin-top:16px;">
-        <strong class="pill-red">Important:</strong> Every time you donate, Alex
-        promises to move one step closer to an actual, finished career arc.
-        Terms and conditions very much not guaranteed.
+      <div class="sidebar-update">
+        <strong class="pill-red">Important:</strong>
+        Every time you donate, Alex promises to move one step closer
+        to an actual, finished career arc. Terms and conditions very much not guaranteed.
       </div>
     </aside>
 
