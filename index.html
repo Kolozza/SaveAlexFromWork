@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Save Alex From Work (URTAM Relief Fund)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --accent: #00b87c;
+      --accent-soft: #d3f3e7;
+      --text-main: #1f2933;
+      --text-muted: #6c7a89;
+      --danger: #ff4f5e;
+      --border: #e1e7ef;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2.2fr 1.1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 20px 22px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+    }
+
+    .campaign-header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .campaign-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00b87c, #2dd4bf);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .campaign-title {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .campaign-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-soft);
+      color: #036b4f;
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 6px;
+    }
+
+    .tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero-image {
+      width: 100%;
+      background: radial-gradient(circle at top left, #00b87c, #111827);
+      border-radius: 12px;
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.9);
+      padding: 16px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    @media (max-width: 700px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-photo-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-copy h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .hero-copy p {
+      font-size: 13px;
+      max-width: 360px;
+      line-height: 1.4;
+    }
+
+    .hero-pill {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      background: rgba(255, 255, 255, 0.09);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .progress-section {
+      margin-bottom: 16px;
+    }
+
+    .goal-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+
+    .raised {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .raised span {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .goal {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: #e5edf5;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .progress-fill {
+      width: 18%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #22c55e);
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .story-heading {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 14px 0 8px;
+    }
+
+    .story p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .story strong {
+      font-weight: 700;
+    }
+
+    .story ul {
+      margin-left: 18px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: var(--text-main);
+    }
+
+    .story li {
+      margin-bottom: 4px;
+    }
+
+    .photos {
+      margin-top: 18px;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 700px) {
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .photo-grid figure {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+    }
+
+    .photo-grid img {
+      display: block;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .photo-grid figcaption {
+      font-size: 12px;
+      padding: 6px 8px 8px;
+      color: var(--text-muted);
+    }
+
+    .aside-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .donate-button {
+      display: block;
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+      margin: 8px 0 10px;
+      box-shadow: 0 10px 20px rgba(34, 197, 94, 0.35);
+    }
+
+    .donate-button:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+    }
+
+    .quick-amounts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .chip {
+      flex: 1 1 30%;
+      min-width: 70px;
+      padding: 7px 0;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      font-size: 13px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .chip.highlight {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .secure-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .organizer {
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .organizer-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #111827;
+      color: #f9fafb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .organizer small {
+      display: block;
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 9px;
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .donor-list {
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+
+    .donor {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .donor span.name {
+      font-weight: 600;
+    }
+
+    .donor span.amount {
+      font-weight: 600;
+    }
+
+    .donor small {
+      color: var(--text-muted);
+      font-size: 11px;
+      display: block;
+    }
+
+    .update-card {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #f8fafc;
+      border: 1px dashed var(--border);
+      font-size: 12px;
+    }
+
+    .legal {
+      margin-top: 18px;
+      font-size: 10px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .pill-red {
+      color: var(--danger);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- MAIN COLUMN -->
+    <main class="card">
+      <header class="campaign-header">
+        <div class="campaign-avatar">AN</div>
+        <div>
+          <div class="campaign-title">
+            Save Alex From Work (URTAM Relief Fund)
+          </div>
+          <div class="campaign-subtitle">
+            Help Alex battle Ultra-Rare Task Avoidance Myopathy and his body’s violent rejection of productivity.
+          </div>
+          <div class="tag">
+            <span class="tag-dot"></span>
+            <span>Medical • Extremely Rare • Also Kinda Hilarious</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="hero-image">
+        <div class="hero-layout">
+          <div class="hero-photo-wrapper">
+            <!-- HERO PHOTO (Photo 1): Overwhelmed, “I can’t work” Alex -->
+            <!-- Replace src with your generated image file for Alex -->
+            <img
+              src="alex-hero-overwhelmed.jpg"
+              alt="Alex looking dramatically overwhelmed at his desk"
+              class="hero-photo"
+            >
+          </div>
+          <div class="hero-copy">
+            <h2>“I want to work. My body says no.”</h2>
+            <p>
+              Alex has been diagnosed with <strong>Ultra-Rare Task Avoidance Myopathy (URTAM)</strong>,
+              a condition so rare it mostly exists in his doctor’s group chat.
+            </p>
+          </div>
+        </div>
+        <div class="hero-pill">
+          ICD-Definitely-Not-Real: <strong>URTAM-404</strong>
+        </div>
+      </div>
+
+      <section class="progress-section">
+        <div class="goal-row">
+          <div class="raised">€1,820 <span>raised</span></div>
+          <div class="goal">of €10,000 goal</div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <div class="progress-meta">
+          <span>37 fantastic human beings</span>
+          <span>14 days in, 0 days worked</span>
+        </div>
+      </section>
+
+      <section class="story">
+        <h2 class="story-heading">What is Ultra-Rare Task Avoidance Myopathy?</h2>
+        <p>
+          <strong>Ultra-Rare Task Avoidance Myopathy (URTAM)</strong> is a newly
+          documented condition where the patient’s muscles become dramatically weak
+          and floppy specifically when exposed to:
+        </p>
+        <ul>
+          <li>Emails containing the word “deadline”</li>
+          <li>Calendar invites before 11:00 AM</li>
+          <li>Any file named “final_v17_REALLY_FINAL.pdf”</li>
+        </ul>
+        <p>
+          While Alex can still perform certain complex motor tasks (such as
+          scrolling TikTok for 6 consecutive hours or lifting a double cheeseburger
+          to his mouth at 03:00), any attempt to <strong>do actual paid work</strong>
+          triggers an immediate flare-up of symptoms.
+        </p>
+
+        <h2 class="story-heading">Symptoms Alex Lives With Daily</h2>
+        <p>Whenever Alex attempts to work, URTAM causes:</p>
+        <ul>
+          <li>
+            <strong>Acute Horizontal Syndrome</strong> – his body becomes mysteriously
+            magnetized to the nearest sofa.
+          </li>
+          <li>
+            <strong>Vision Blurring Near Spreadsheets</strong> – can read memes in 4K,
+            but Excel cells become “emotionally pixelated.”
+          </li>
+          <li>
+            <strong>Chrono-Distortion Episodes</strong> – 8-hour workdays feel like
+            47 years, yet 5 hours on YouTube feels like 3 minutes.
+          </li>
+          <li>
+            <strong>Task-Induced Micro-Sleep</strong> – falls asleep instantly upon
+            hearing phrases like “circle back” or “touch base.”
+          </li>
+        </ul>
+
+        <p>
+          His doctors describe the condition as “<em>extremely rare, highly
+          suspicious, but unfortunately kind of valid</em>.”
+        </p>
+
+        <h2 class="story-heading">Why Alex Cannot Work Right Now</h2>
+        <p>
+          URTAM has destroyed Alex’s ability to maintain regular employment.
+          He has tried:
+        </p>
+        <ul>
+          <li>Remote work – he “accidentally” worked remotely from his bed for 3 months.</li>
+          <li>Flexible hours – he flexibly chose zero of them.</li>
+          <li>Freelancing – his freelancing clients are currently “free of a lancer.”</li>
+        </ul>
+
+        <p>
+          This campaign will help cover his essential expenses while he undergoes
+          highly experimental “productivity exposure therapy,” which consists mainly
+          of:
+        </p>
+        <ul>
+          <li>Being slowly reintroduced to Google Calendar, one event at a time.</li>
+          <li>Graded exposure to emails marked “urgent.”</li>
+          <li>
+            Advanced physical conditioning, like getting up from his chair
+            without checking his phone halfway.
+          </li>
+        </ul>
+
+        <h2 class="story-heading">Where Your Donations Go</h2>
+        <p>Your contribution will directly help Alex with:</p>
+        <ul>
+          <li><strong>Rent & groceries</strong> – so he does not have to develop URTAM 2: Malnutrition Edition.</li>
+          <li><strong>Therapy sessions</strong> – both real and the kind where he vents about Mondays.</li>
+          <li><strong>Standing desk & ergonomic chair</strong> – allegedly the “holy relics” of productivity.</li>
+          <li><strong>No-distraction headphones</strong> – to block out the sound of his own excuses.</li>
+        </ul>
+
+        <p>
+          If, by some miracle, URTAM goes into remission and Alex returns to
+          functioning like a normal adult human, any extra funds will be used to:
+        </p>
+        <ul>
+          <li>Pay forward to others with suspiciously specific conditions, and/or</li>
+          <li>Buy coffee for everyone who believed in him before he answered a single email.</li>
+        </ul>
+
+        <h2 class="story-heading">A Message From Alex</h2>
+        <p>
+          “I used to think I was just lazy. Turns out I have a
+          <strong>hyper-selective neuromuscular response to responsibility</strong>.
+          My neurologist says it’s ‘not technically illegal.’ But it has made a real
+          mess of my life, my career, and my ability to even pretend I know what a
+          9–5 feels like.
+        </p>
+        <p>
+          If you donate, you are not just helping me pay rent – you are helping fund
+          science. Very confused science. But still, technically science.”
+        </p>
+
+        <h2 class="story-heading">How You Can Help (Besides Mocking Him)</h2>
+        <p>
+          If you cannot donate, you can still help by sharing this campaign and
+          raising awareness of URTAM. For too long, sufferers of Task Avoidance
+          Myopathy have been misdiagnosed as “lazy,” “unmotivated,” or “in need of a
+          reality check.”
+        </p>
+        <p>
+          Together, we can change that diagnosis to something much more complicated
+          and expensive-sounding.
+        </p>
+      </section>
+
+      <!-- PHOTO GALLERY SECTION -->
+      <section class="photos">
+        <h2 class="story-heading">Meet Alex (in 4 extremely scientific images)</h2>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:6px;">
+          For full comedic impact, these are “before / during / medical / recovery” shots
+          documenting Alex’s brave battle with URTAM.
+        </p>
+
+        <div class="photo-grid">
+          <figure>
+            <!-- Photo 2: BEFORE URTAM – happy, functional Alex -->
+            <img
+              src="alex-before-urtam.jpg"
+              alt="Alex looking happy and energetic before URTAM"
+            >
+            <figcaption>Before URTAM: high-energy, fully functional, suspiciously employable Alex.</figcaption>
+          </figure>
+
+          <figure>
+            <!-- Photo 3: DURING URTAM – couch, laptop ignored -->
+            <img
+              src="alex-during-urtam-couch.jpg"
+              alt="Alex on the couch ignoring his open laptop"
+            >
+            <figcaption>During URTAM: laptop open, productivity at 0%, snack consumption at 300%.</figcaption>
+          </figure>
+
+          <figure>
+            <!-- Photo 4: “MEDICAL” shot – doctor visit -->
+            <img
+              src="alex-doctor-visit.jpg"
+              alt="Alex with a doctor pointing at a ridiculous chart"
+            >
+            <figcaption>Scientific evidence: doctor pointing at a very serious chart labeled “Productivity vs. Memes.”</figcaption>
+          </figure>
+
+          <figure>
+            <!-- Photo 5: THERAPY / RECOVERY – Alex trying his best -->
+            <img
+              src="alex-therapy-progress.jpg"
+              alt="Alex slowly attempting to work at a laptop with therapist nearby"
+            >
+            <figcaption>Recovery phase: Alex bravely keeps a spreadsheet open for more than 12 seconds.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="update-card">
+        <strong>Latest update:</strong> Alex successfully opened his laptop two days
+        in a row. He did immediately close it again, but medically this is considered
+        “promising progress.”
+      </section>
+
+      <div class="legal">
+        Note: Ultra-Rare Task Avoidance Myopathy (URTAM) is a humorous, fictional
+        condition created for this parody-style fundraiser page. It is not real
+        medical advice or a real diagnosis. Any resemblance to your personal excuse
+        for not working is purely coincidental… probably.
+      </div>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="card">
+      <button class="donate-button">Donate now</button>
+      <div class="secure-note">
+        Secure payment • Instant confirmation • 0% productivity required from you
+      </div>
+
+      <div class="quick-amounts">
+        <div class="chip">€5</div>
+        <div class="chip highlight">€20</div>
+        <div class="chip">€50</div>
+        <div class="chip">€100</div>
+      </div>
+
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom: 14px;">
+        €20 helps cover one therapy session where Alex bravely looks at his inbox.
+        €50 sponsors a full day of Trying His Best™.
+      </p>
+
+      <div class="aside-title">Campaign created by</div>
+      <div class="organizer">
+        <div class="organizer-avatar">N</div>
+        <div>
+          <strong>Niko (long-suffering friend)</strong>
+          <small>Organizing this fundraiser for Alex Nestor</small>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div>
+          <div style="font-weight:600;">37</div>
+          <div>donations</div>
+        </div>
+        <div>
+          <div style="font-weight:600;">Shared 89 times</div>
+          <div>possibly by Alex instead of working</div>
+        </div>
+      </div>
+
+      <div class="aside-title" style="margin-top: 16px;">Recent donations</div>
+      <div class="donor-list">
+        <div class="donor">
+          <div>
+            <span class="name">Anonymous Legend</span>
+            <small>“I also have URTAM, but for the gym.”</small>
+          </div>
+          <span class="amount">€50</span>
+        </div>
+        <div class="donor">
+          <div>
+            <span class="name">Mom</span>
+            <small>“Please just answer your emails, honey.”</small>
+          </div>
+          <span class="amount">€100</span>
+        </div>
+        <div class="donor">
+          <div>
+            <span class="name">Former Boss</span>
+            <small>“This explains a LOT.”</small>
+          </div>
+          <span class="amount">€10</span>
+        </div>
+        <div class="donor">
+          <div>
+            <span class="name">The Group Chat</span>
+            <small>“Funding this for content.”</small>
+          </div>
+          <span class="amount">€25</span>
+        </div>
+      </div>
+
+      <div class="update-card" style="margin-top:16px;">
+        <strong class="pill-red">Important:</strong> Every time you donate, Alex
+        promises to attempt one (1) responsible adult task. Results not guaranteed.
+      </div>
+    </aside>
+
+  </div>
+</body>
+</html>
